@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -10,45 +10,29 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepPurple,
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Center(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.deepPurple,
+        body: Container(
+          width: double.infinity,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 20),
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Container(child: const Icon(Icons.person, size: 100)),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 100),
+                color: Colors.grey,
+                height: 30,
+                child: Text('E-mail'),
               ),
-              Divider(),
-              TextFormField(
-                autofocus: true,
-                obscureText: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 20),
-                decoration: InputDecoration(
-                  labelText: 'Senha',
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
-              ),
-              Divider(),
-              ButtonTheme(
-                height: 60.0,
-                child: ElevatedButton(
-                  onPressed: () => {},
-                  child: Text(
-                    'Entrar',
-                    style: TextStyle(color: Colors.deepPurple),
-                  ),
-                ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 100),
+                color: Colors.grey,
+                height: 30,
+                child: Text('Senha'),
               ),
             ],
           ),
