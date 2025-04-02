@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.deepPurple,
-        body: Container(
+        body: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 30,
                 child: Text('Senha'),
               ),
+              ElevatedButton(onPressed: () {}, child: const Text('Entrar')),
             ],
           ),
         ),
