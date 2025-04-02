@@ -23,16 +23,22 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 100),
-                color: Colors.grey,
                 height: 30,
                 child: Text('E-mail'),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey,
+                ),
               ),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 100),
-                color: Colors.grey,
                 height: 30,
                 child: Text('Senha'),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey,
+                ),
               ),
               ElevatedButton(onPressed: () {}, child: const Text('Entrar')),
             ],
