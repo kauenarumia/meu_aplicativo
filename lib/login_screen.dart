@@ -1,3 +1,4 @@
+import 'package:meu_aplicativo/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,6 +9,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,31 +25,72 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 50),
               const Icon(Icons.person, size: 100),
               const SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 100),
-                height: 30,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: "E-mail",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    prefixIcon: const Icon(Icons.email),
+                  ),
                 ),
-                child: const Text('E-mail'),
               ),
               const SizedBox(height: 10),
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 100),
-                height: 30,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  controller: senhaController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Senha",
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    prefixIcon: const Icon(Icons.lock),
+                  ),
                 ),
-                child: const Text('Senha'),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {}, child: const Text('Entrar')),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(
+                    100,
+                    70,
+                  ), // Define largura e altura mínimas
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 30,
+                  ), // Aumenta o espaço interno
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                  ), // Aumenta o tamanho do texto
+                ),
+                onPressed: () {
+                  if (emailController.text.trim() == 'kaueyujimn11@gmail.com' &&
+                      senhaController.text.trim() == '123') {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Erro ao efetuar login!')),
+                    );
+                  }
+                },
+                child: const Text('Entrar'),
+              ),
             ],
           ),
         ),
