@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_aplicativo/dadoscadastraispage.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,8 +11,37 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Página Inicial"),
         backgroundColor: Colors.deepPurple,
       ),
-      body: const Center(
-        child: Text("Bem-vindo à HomeScreen!", style: TextStyle(fontSize: 20)),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Bem-vindo à HomeScreen!",
+              style: TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 20), // Adiciona espaço entre os widgets
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(100, 70),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 30,
+                ),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => DadosCadastraisPage(), // Sem const aqui
+                  ),
+                );
+              },
+              child: const Text('Cadastrar Dados'),
+            ),
+          ],
+        ),
       ),
     );
   }
